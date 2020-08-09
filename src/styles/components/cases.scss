@@ -1,6 +1,10 @@
 .cases {
     height: 50vh;
     height: calc(var(--vh, 1vh) * 50);
+    overflow: hidden;
+    @include media("<=tablet") {
+        overflow: initial;
+    }
     .cases-navigation {
         position: absolute;
         bottom: 0px;
@@ -33,12 +37,17 @@
         }
     }
     .row {
+        overflow-x: auto;
+        display: flex;
+        flex-flow: row nowrap;
         @include media('<=tablet') {
             flex-direction: column;
         }
         .case {
             position: relative;
             background: $black;
+            flex: 1 0 33.333%;
+            overflow: hidden;
             cursor: pointer;
             &:hover {
                 .case-image {
@@ -46,7 +55,7 @@
                 }
             }
             .case-details {
-                width: 33.333vw;
+                width: 100%;
                 height: 50vh;
                 height: calc(var(--vh, 1vh) * 50);
                 display: flex;
